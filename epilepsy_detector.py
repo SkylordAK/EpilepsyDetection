@@ -49,7 +49,7 @@ def notch_filter(data, f0=60.0, fs=FS, Q=30.0):
 def band_power(data, low, high, fs=FS):
     freqs, psd = welch(data, fs=fs, nperseg=min(len(data), 256), axis=0)
     mask = (freqs >= low) & (freqs <= high)
-    return np.trapz(psd[mask], freqs[mask], axis=0)
+    return np.trapezoid(psd[mask], freqs[mask], axis=0)
 
 
 def analyze_window(window):
